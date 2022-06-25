@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import * as api from '../apis/apiFile'
+import Coin from './Coin'
 
 function App() {
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase())
+  )
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
 
@@ -9,7 +13,6 @@ function App() {
     setSearch(e.target.value)
   }
 
-  function filterCoins(coins) {}
   //useEffect to call getcrypto function which calls api
   useEffect(async () => {
     try {
@@ -33,6 +36,18 @@ function App() {
           />
         </form>
       </div>
+      {filteredCoins.map((coin) => {
+        return (
+          <Coin
+            key={coin.id}
+            name={coin.name}
+            image={coin.image}
+            symbol={coin.symbol}
+            volume={coin.market_cap}
+            price={coin.current_price}
+          />
+        )
+      })}
     </div>
   )
 }
