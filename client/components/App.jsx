@@ -3,6 +3,7 @@ import * as api from '../apis/apiFile'
 import Coin from './Coin'
 
 function App() {
+  //can use state to change currency on endpoint url
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
 
@@ -46,8 +47,10 @@ function App() {
             name={coin.name}
             image={coin.image}
             symbol={coin.symbol}
-            volume={coin.market_cap}
+            marketcap={coin.market_cap}
             price={coin.current_price}
+            priceChange={coin.price_change_percentage_24h}
+            volume={coin.total_volume}
           />
         )
       })}
