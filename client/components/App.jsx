@@ -3,9 +3,6 @@ import * as api from '../apis/apiFile'
 import Coin from './Coin'
 
 function App() {
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  )
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
 
@@ -17,11 +14,17 @@ function App() {
   useEffect(async () => {
     try {
       const crypto = await api.getCrypto()
-      console.log(crypto)
+      setCoins(crypto.body)
     } catch (error) {
       console.error
     }
   }, [])
+
+  console.log('hey', coins)
+
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   return (
     <div className="coin-app">
