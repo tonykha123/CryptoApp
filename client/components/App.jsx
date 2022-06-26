@@ -6,6 +6,7 @@ function App() {
   //can use state to change currency on endpoint url
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
+  const [currency, setCurrency] = useState('NZD')
 
   function handleChange(e) {
     setSearch(e.target.value)
@@ -39,6 +40,18 @@ function App() {
             onChange={handleChange}
           />
         </form>
+
+        <div className="coin-currency">
+          <label htmlFor="test">Select Currency</label>
+          <select name="currency-change" id="test">
+            <option value="USD">USD</option>
+            <option value="NZD">NZD</option>
+            <option value="EUR">EUR</option>
+            <option value="AUD">AUD</option>
+            <option value="JPY">JPY</option>
+            <option value="VND">VND</option>
+          </select>
+        </div>
       </div>
       {filteredCoins.map((coin) => {
         return (
