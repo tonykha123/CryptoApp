@@ -5,6 +5,9 @@
   background-color: #1a1a1c;
 }
 
+.coin-currency {
+  color: white;
+}
 .coin-search {
   margin-bottom: 64px;
   display: flex;

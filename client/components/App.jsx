@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import request from 'superagent'
 import * as api from '../apis/apiFile'
 import Coin from './Coin'
 
@@ -12,18 +13,23 @@ function App() {
     setSearch(e.target.value)
   }
 
+  function handleCurrencyChange(e) {
+    setCurrency(e.target.value)
+  }
+
   //useEffect to call getcrypto function which calls api
   useEffect(async () => {
     try {
-      const crypto = await api.getCrypto()
+      const crypto = await request.get(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+      )
       setCoins(crypto.body)
     } catch (error) {
       console.error
     }
-  }, [])
+  }, [currency])
 
-  console.log('hey', coins)
-
+  console.log(currency)
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLowerCase())
   )
@@ -43,9 +49,13 @@ function App() {
 
         <div className="coin-currency">
           <label htmlFor="test">Select Currency</label>
-          <select name="currency-change" id="test">
-            <option value="USD">USD</option>
+          <select
+            name="currency-change"
+            id="test"
+            onChange={handleCurrencyChange}
+          >
             <option value="NZD">NZD</option>
+            <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="AUD">AUD</option>
             <option value="JPY">JPY</option>
@@ -64,6 +74,7 @@ function App() {
             price={coin.current_price}
             priceChange={coin.price_change_percentage_24h}
             volume={coin.total_volume}
+            currency={currency}
           />
         )
       })}

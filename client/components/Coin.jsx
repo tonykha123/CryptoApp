@@ -8,6 +8,7 @@ const Coin = ({
   volume,
   priceChange,
   marketcap,
+  currency,
 }) => {
   return (
     <div className="coin-container">
@@ -18,8 +19,12 @@ const Coin = ({
           <p className="coin-symbol">{symbol}</p>
         </div>
         <div className="coin-data">
-          <p className="coin-price">${price.toLocaleString()} NZD</p>
-          <p className="coin-volume">${volume.toLocaleString()} NZD</p>
+          <p className="coin-price">
+            ${price.toLocaleString()} {currency}
+          </p>
+          <p className="coin-volume">
+            ${volume.toLocaleString()} {currency}
+          </p>
 
           {priceChange < 0 ? (
             <p className="coin-percent red">{priceChange}%</p>
@@ -28,7 +33,7 @@ const Coin = ({
           )}
 
           <p className="coin-marketcap">
-            Market Cap: ${marketcap.toLocaleString()}
+            Market Cap: ${marketcap.toLocaleString()} {currency}
           </p>
         </div>
       </div>
