@@ -4,7 +4,6 @@ import * as api from '../apis/apiFile'
 import Coin from './Coin'
 
 function App() {
-  //can use state to change currency on endpoint url
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
   const [currency, setCurrency] = useState('NZD')
