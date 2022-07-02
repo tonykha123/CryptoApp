@@ -41,8 +41,10 @@
     "express": "^4.17.2",
     "knex": "^2.1.0",
     "pg": "^8.7.1",
+    "react-switch": "^7.0.0",
     "sqlite3": "^5.0.8",
-    "superagent": "^7.1.1"
+    "superagent": "^7.1.1",
+    "switch": "^0.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
