@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import request from 'superagent'
-import * as api from '../apis/apiFile'
 import Coin from './Coin'
 
 function App() {
@@ -59,6 +58,7 @@ function App() {
             <option value="AUD">AUD</option>
             <option value="JPY">JPY</option>
             <option value="VND">VND</option>
+            <option value="EGP">EGP</option>
           </select>
         </div>
       </div>
